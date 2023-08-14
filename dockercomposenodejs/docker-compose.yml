@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  nginx:
+    restart: unless-stopped
+    build:
+      context: ./nginxbalancer
+    container_name: nginx
+    tty: true
+    ports:
+      - "5003:3003"
+    networks:
+      - node1conn
+      - node2conn
+    depends_on:
+      - node1
+      - node2
+  node1:
+    build:
+      context: ./server1
+    restart: unless-stopped
+    container_name: node1con
+    ports:
+      - "5000:3000"
+    tty: true
+    networks:
+      - node1conn
+  node2:
+    build:
+      context: ./server2
+    restart: unless-stopped
+    container_name: node2con
+    ports:
+      - "5001:3001"
+    tty: true
+    networks:
+      - node2conn
+networks:
+  node1conn:
+    driver: bridge
+  node2conn:
+    driver: bridge
