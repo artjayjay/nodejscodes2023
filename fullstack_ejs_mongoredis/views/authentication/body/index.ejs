@@ -1,0 +1,71 @@
+<main>
+  <%- include('loginpage.ejs') %>
+  <!-- /////////////////////// -->
+  <%- include('registerpage.ejs') %>
+  <div class="linkcon">
+    <span class="linkdes1" id="toggleLink">Register</span>
+  </div>
+</main>
+
+<script nonce="<%= nonce %>">
+  const toggleLink = document.getElementById("toggleLink");
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      let getdata = {
+        username: document.getElementById("usernametext").value,
+        password: document.getElementById("passwordtext").value,
+      };
+      let response = await axios.post("/api/login", getdata, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.data.status == "success") {
+        location.replace("./dashboard");
+      } else {
+        alert("Invalid");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  });
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      let getdata = {
+        lastname: document.getElementById("reglastnametext").value,
+        firstname: document.getElementById("regfirstnametext").value,
+        username: document.getElementById("regusernametext").value,
+        password: document.getElementById("regpasswordtext").value,
+      };
+      let response = await axios.post("/api/register", getdata, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.data.status == "success") {
+        alert("Successfully Registered");
+      } else {
+        alert("Invalid");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  });
+  loginForm.style.display = "block";
+  toggleLink.addEventListener("click", () => {
+    if (loginForm.style.display === "block") {
+      loginForm.style.display = "none";
+      registerForm.style.display = "block";
+      toggleLink.textContent = "Login";
+    } else {
+      loginForm.style.display = "block";
+      registerForm.style.display = "none";
+      toggleLink.textContent = "Register";
+    }
+  });
+</script>

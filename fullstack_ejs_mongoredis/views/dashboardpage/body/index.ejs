@@ -1,0 +1,53 @@
+<main class="dashboardpage">
+  <h2>Welcome <%= name %></h2>
+  <div class="cont">
+    <button class="btndes1" id="logoutbtnid">Logout</button>
+  </div>
+  <div class="cont">
+    <button class="btndes1" id="sendsocketid">Send Socket</button>
+  </div>
+  <div class="cont">
+    <input type="file" id="file1" />
+    <button class="btndes1">Upload File</button>
+  </div>
+  <div class="cont">
+    <select id="dropdownid">
+      <option value="nosched">No Sched</option>
+      <option value="withsched">With Sched</option>
+    </select>
+  </div>
+  <div class="cont">
+    <input
+      class="textinput"
+      type="text"
+      placeholder="id number"
+      id="useridnum" />
+  </div>
+  <div class="cont">
+    <input
+      class="textinput"
+      type="text"
+      placeholder="message"
+      style="height: 60px"
+      id="usermsgid" />
+  </div>
+  <div class="cont">
+    <button class="btndes1">Send to Someone</button>
+  </div>
+  <div class="cont">
+    <button class="btndes1">Notif Subscribe</button>
+  </div>
+</main>
+<script nonce="<%= nonce %>">
+  document.getElementById("logoutbtnid").addEventListener("click", async () => {
+    try {
+      let response = await fetch("/api/logout", {
+        method: "GET",
+      });
+      let myresult = await response.json();
+      if (myresult.status === "success") {
+        location.replace("../");
+      }
+    } catch (error) {}
+  });
+</script>

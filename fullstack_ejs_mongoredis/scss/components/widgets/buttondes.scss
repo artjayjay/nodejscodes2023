@@ -1,0 +1,16 @@
+@use "../../util";
+/*///////////// button design ////////////*/
+.btndes1 {
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 35px;
+  background-color: util.$rustred;
+  color: white;
+  transition: 0.5s;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}
+/* ////////////////////////////////////// */
