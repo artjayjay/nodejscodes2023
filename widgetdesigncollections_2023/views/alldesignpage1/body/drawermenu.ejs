@@ -1,0 +1,22 @@
+<div HTMLINCLUDE="drawermenudesignid" class="fullwidth fullheight">
+  <button class="sidenavid1">to basic designs</button>
+  <button class="sidenavid2">to progress design</button>
+
+  <nav>
+    <span id="burgermenubtnid" class="burgermenubtn">&#9776;</span>
+  </nav>
+  <script nonce="<%= nonce %>">
+    document
+      .getElementById("burgermenubtnid")
+      .addEventListener("click", function () {
+        document.getElementById("overlayid").classList.add("show");
+        document.getElementById("drawermenuid").classList.add("show");
+        document
+          .getElementById("closebtnid")
+          .addEventListener("click", function () {
+            document.getElementById("overlayid").classList.remove("show");
+            document.getElementById("drawermenuid").classList.remove("show");
+          });
+      });
+  </script>
+</div>

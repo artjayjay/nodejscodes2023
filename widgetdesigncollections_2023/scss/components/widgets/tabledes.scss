@@ -1,0 +1,79 @@
+@use "../../util";
+/* /////////// table design ////////// */
+/* ////////// table design 2 ///////// */
+.outertbl2 {
+  width: 80%;
+  border-radius: 10px;
+  overflow-x: auto;
+  padding: 10px;
+  background-color: #d2ecec;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 2px 2px 6px #d2ecec;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &:hover {
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track:vertical {
+    margin-top: 40px;
+  }
+
+  ::-webkit-scrollbar-track:horizontal {
+    margin-left: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+    transition: 0.5s;
+    &:hover {
+      background: rgb(167, 167, 167);
+    }
+  }
+
+  .outertbl1 {
+    height: 300px;
+    overflow-y: auto;
+    table {
+      border-collapse: collapse;
+      thead {
+        position: sticky;
+        top: 0;
+        background-color: util.$brown;
+        color: util.$white;
+        tr {
+          th {
+            padding: 10px 10px;
+          }
+        }
+      }
+      tbody {
+        td {
+          text-align: left;
+          padding: 10px 10px;
+        }
+        tr {
+          background-color: util.$white;
+        }
+        tr:nth-child(even) {
+          background-color: util.$lightgray;
+        }
+      }
+    }
+  }
+}
+
+/* /////////////////////////////////// */
+/* /////////////////////////////////// */

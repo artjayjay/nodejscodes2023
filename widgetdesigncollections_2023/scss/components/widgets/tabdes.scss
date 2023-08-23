@@ -1,0 +1,23 @@
+@use "../../util";
+/* ////////////// tab des 1 ////////// */
+.tabbuttondes1 {
+  label {
+    width: 20%;
+  }
+}
+.tab1 {
+  .tabdes1 {
+    background-color: util.$white;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.2);
+  }
+  .radiobtn1 {
+    display: none;
+  }
+  .radiobtn1:checked + .tabdes1 {
+    background-color: util.$aquamarine;
+    color: util.$white;
+    box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.2);
+  }
+}
+/* /////////////////////////////////// */

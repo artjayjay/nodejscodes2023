@@ -1,0 +1,71 @@
+nav {
+  position: relative;
+}
+.burgermenubtn {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+}
+/* //////////////////// for drawer menu ////////////////// */
+.overlaydes {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 2;
+  display: none;
+  transition: visibility 0s, opacity 0.5s linear;
+  &.show {
+    display: inline-block;
+  }
+}
+
+.drawermenu1 {
+  height: 100%;
+  z-index: 3;
+  background-color: black;
+  transition: 0.5s;
+  width: 0;
+  overflow-x: hidden; /* to prevent text visible */
+  position: fixed;
+
+  &.show {
+    width: 60%;
+  }
+  .drawercont {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .drawerclosebtn {
+      position: absolute;
+      right: 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 30px;
+    }
+    ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      li {
+        text-align: center;
+        padding: 20px;
+        color: white;
+        list-style-type: none;
+        &:hover {
+          background-color: white;
+          color: black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

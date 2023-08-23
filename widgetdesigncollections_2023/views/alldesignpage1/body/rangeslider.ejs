@@ -1,0 +1,99 @@
+<style>
+  .slidercontainer {
+    background-color: #ffffff;
+    width: 90vmin;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 20px;
+    border-radius: 5px;
+  }
+</style>
+<div
+  HTMLINCLUDE="rangesliderdesignid"
+  class="fullwidth fullheight"
+  style="background-color: #3264fe; position: relative">
+  <div class="slidercontainer">
+    <div class="slider">
+      <input
+        type="range"
+        class="my-slider"
+        min="0"
+        max="100"
+        value="50"
+        id="slider-1" />
+      <div class="slider-value" id="slider-value-1">0</div>
+    </div>
+    <div class="slider">
+      <input
+        type="range"
+        class="my-slider"
+        min="0"
+        max="100"
+        value="50"
+        id="slider-2" />
+      <div class="slider-value" id="slider-value-2">0</div>
+    </div>
+    <div class="slider">
+      <input
+        type="range"
+        class="my-slider"
+        min="0"
+        max="100"
+        value="50"
+        id="slider-3" />
+      <div class="slider-value" id="slider-value-3">0</div>
+    </div>
+    <div class="slider">
+      <input
+        type="range"
+        class="my-slider vranger"
+        min="0"
+        max="100"
+        value="50"
+        id="slider-4" />
+      <div class="slider-value vvalue" id="slider-value-4">0</div>
+    </div>
+    <div class="slider">
+      <input
+        type="range"
+        class="my-slider vranger"
+        min="0"
+        max="100"
+        value="50"
+        id="slider-5" />
+      <div class="slider-value vvalue" id="slider-value-5">0</div>
+    </div>
+  </div>
+</div>
+<script nonce="<%= nonce %>">
+  const sliders = document.querySelectorAll(".my-slider");
+
+  function updateSlider(slider, valueContainer) {
+    const valPercent =
+      ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+    slider.style.background = `linear-gradient(to right, #3264fe ${valPercent}%, #d5d5d5 ${valPercent}%)`;
+    valueContainer.textContent = slider.value;
+  }
+
+  function setupSlider(sliderId) {
+    const slider = document.getElementById(sliderId);
+    const valueContainer = document.getElementById(
+      `slider-value-${sliderId.slice(7)}`
+    );
+
+    slider.addEventListener("input", () => {
+      updateSlider(slider, valueContainer);
+    });
+
+    updateSlider(slider, valueContainer);
+  }
+
+  sliders.forEach((slider, index) => {
+    setupSlider(`slider-${index + 1}`);
+  });
+</script>

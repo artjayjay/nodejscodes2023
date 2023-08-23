@@ -1,0 +1,12 @@
+@use "../../util";
+/* //////////// input design //////////// */
+.inputtextdes1 {
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: rgb(211, 211, 211);
+  padding: 6px 10px;
+  font-family: util.$font1;
+  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.2);
+}
+/* /////////////////////////////////// */

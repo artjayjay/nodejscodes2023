@@ -1,0 +1,547 @@
+<div HTMLINCLUDE="basicdesignsid" class="fullwidth fullheight basicdesignspage">
+  <div id="snackbar1"></div>
+  <br />
+  <div style="width: 20%">
+    <button class="btndes1">Button1</button>
+  </div>
+  <br />
+  <div style="width: 20%">
+    <button class="btndes2">Button2</button>
+  </div>
+  <button class="sidenavid2">to progress design</button>
+  <button class="sidenavid3">to drawer menu design</button>
+  <br />
+  <div style="width: 20%">
+    <input type="text" class="inputtextdes1" placeholder="Any Text" />
+  </div>
+  <br />
+  <div style="width: 20%">
+    <input type="password" class="inputtextdes1" placeholder="Password" />
+  </div>
+  <br />
+  <br />
+  <!-- //////////////////// dropdown nav //////////////////// -->
+  <div class="navdropdown" id="dropdown1">
+    <div class="dropdown-toggle">
+      <span style="width: 100%; text-align: right"
+        ><ion-icon name="caret-down-outline"></ion-icon
+      ></span>
+    </div>
+    <div class="dropdown-menu">
+      <div>Option 1</div>
+      <div>Option 2</div>
+      <div>Option 3</div>
+    </div>
+  </div>
+
+  <div class="navdropdown" id="dropdown2">
+    <div class="dropdown-toggle">
+      <span style="width: 100%; text-align: right"
+        ><ion-icon name="caret-down-outline"></ion-icon
+      ></span>
+    </div>
+    <div class="dropdown-menu">
+      <div>Option 1</div>
+      <div>Option 2</div>
+      <div>Option 3</div>
+    </div>
+  </div>
+  <script nonce="<%= nonce %>">
+    function navdropdownwidgetjs() {
+      ///////////////// secure version ///////////////
+      (function () {
+        let elements = document.querySelectorAll(".dropdown-menu");
+        elements.forEach((element) => {
+          element.style.display = "none";
+        });
+      })();
+
+      function closealldropdown() {
+        let dropdownmenus = document.querySelectorAll(".dropdown-menu");
+        let dropdownmenus2 = document.querySelectorAll(".dropdown-toggle");
+        dropdownmenus.forEach((element) => {
+          element.style.display = "none";
+        });
+        dropdownmenus2.forEach((element) => {
+          element.style.backgroundColor = "transparent";
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".navdropdown")) {
+          closealldropdown();
+        }
+      });
+      function setdropdownid(id) {
+        document
+          .getElementById(id)
+          .getElementsByTagName("div")[0]
+          .addEventListener("click", function () {
+            let dropdownmenu = document
+              .getElementById(id)
+              .getElementsByTagName("div")[1];
+            let dropdownmenu2 = document
+              .getElementById(id)
+              .getElementsByTagName("div")[0];
+            if (dropdownmenu.style.display === "none") {
+              closealldropdown();
+              dropdownmenu.style.display = "block";
+              dropdownmenu2.style.setProperty(
+                "background-color",
+                "rgb(252, 239, 241)"
+              );
+            } else {
+              dropdownmenu.style.display = "none";
+              dropdownmenu2.style.backgroundColor = "transparent";
+            }
+          });
+
+        document
+          .getElementById(id)
+          .getElementsByTagName("div")[1]
+          .addEventListener("click", function (event) {
+            if (event.currentTarget === event.target) {
+              // Click occurred on the container itself (not on inner divs)
+              return; // Ignore the event
+            }
+
+            if (event.target.tagName === "DIV") {
+              // Click occurred on an inner div
+              console.log(event.target.innerHTML);
+              closealldropdown();
+            }
+          });
+      }
+
+      ////////////////////////////////////////////////
+
+      return {
+        setdropdownid,
+      };
+    }
+
+    let navdropdownfunc = navdropdownwidgetjs();
+    navdropdownfunc.setdropdownid("dropdown1");
+    navdropdownfunc.setdropdownid("dropdown2");
+  </script>
+  <br />
+  <br />
+  <!-- ////////////////////////////////////////////////////// -->
+  <!-- /////////////////// select dropdown ////////////////// -->
+  <div class="dropdowndes1" id="dropdown3">
+    <div class="dropdown-toggle2">
+      <p style="display: flex; align-items: center; white-space: nowrap">
+        Option 1
+        <span style="width: 100%; text-align: right"
+          ><ion-icon name="caret-down-outline"></ion-icon
+        ></span>
+      </p>
+    </div>
+    <div class="dropdown-menu2">
+      <div>Option 1</div>
+      <div>Option 2</div>
+      <div>Option 3</div>
+      <div>Option 4</div>
+    </div>
+  </div>
+
+  <div class="dropdowndes1" id="dropdown4">
+    <div class="dropdown-toggle2">
+      <p style="display: flex; align-items: center; white-space: nowrap">
+        Option 1
+        <span style="width: 100%; text-align: right"
+          ><ion-icon name="caret-down-outline"></ion-icon
+        ></span>
+      </p>
+    </div>
+    <div class="dropdown-menu2">
+      <div>Option 1</div>
+      <div>Option 2</div>
+      <div>Option 3</div>
+      <div>Option 4</div>
+    </div>
+  </div>
+
+  <script nonce="<%= nonce %>">
+    function selectdropdownwidgetjs() {
+      ///////////////// secure version ///////////////
+
+      ////////// getting value and function trigger /////////
+      function geteffect(id, value) {
+        console.log(id, value);
+        // logic here
+      }
+      ///////////////////////////////////////////////////////
+
+      (function () {
+        let elements = document.querySelectorAll(".dropdown-menu2");
+        elements.forEach((element) => {
+          element.style.display = "none";
+        });
+      })();
+
+      function closealldropdown() {
+        let dropdownmenus = document.querySelectorAll(".dropdown-menu2");
+        let dropdownmenus2 = document.querySelectorAll(".dropdown-toggle2");
+        dropdownmenus.forEach((element) => {
+          element.style.display = "none";
+        });
+        dropdownmenus2.forEach((element) => {
+          element.style.backgroundColor = "transparent";
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".dropdowndes1")) {
+          closealldropdown();
+        }
+      });
+      function setdropdownid(id) {
+        document
+          .getElementById(id)
+          .getElementsByTagName("div")[0]
+          .addEventListener("click", function () {
+            let dropdownmenu = document
+              .getElementById(id)
+              .getElementsByTagName("div")[1];
+            let dropdownmenu2 = document
+              .getElementById(id)
+              .getElementsByTagName("div")[0];
+            if (dropdownmenu.style.display === "none") {
+              closealldropdown();
+              dropdownmenu.style.display = "block";
+              dropdownmenu2.style.setProperty(
+                "background-color",
+                "rgb(252, 239, 241)"
+              );
+            } else {
+              dropdownmenu.style.display = "none";
+              dropdownmenu2.style.backgroundColor = "transparent";
+            }
+          });
+
+        document
+          .getElementById(id)
+          .getElementsByTagName("div")[1]
+          .addEventListener("click", function (event) {
+            if (event.currentTarget === event.target) {
+              // Click occurred on the container itself (not on inner divs)
+              return; // Ignore the event
+            }
+
+            if (event.target.tagName === "DIV") {
+              // Click occurred on an inner div
+              document
+                .getElementById(id)
+                .getElementsByTagName(
+                  "div"
+                )[0].innerHTML = `<p style="display: flex; align-items: center; white-space: nowrap">${event.target.innerHTML}
+                          <span style="width: 100%; text-align: right"
+                              ><ion-icon name="caret-down-outline"></ion-icon
+                          ></span>
+                          </p>`;
+              closealldropdown();
+              geteffect(id, event.target.innerHTML);
+            }
+          });
+      }
+
+      ////////////////////////////////////////////////
+
+      return {
+        setdropdownid,
+      };
+    }
+
+    let dropdown = selectdropdownwidgetjs();
+    dropdown.setdropdownid("dropdown3");
+    dropdown.setdropdownid("dropdown4");
+  </script>
+  <!-- /////////////////////////////////////////////////// -->
+  <br />
+  <br />
+  <a class="linkdes1">link design</a>
+  <br />
+  <!-- //////////////////// table design //////////////// -->
+  <div class="outertbl2">
+    <div id="scrollidtbl" class="outertbl1">
+      <table>
+        <thead>
+          <tr>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+            <th>nametest</th>
+          </tr>
+        </thead>
+        <template id="table_tbodytemplate">
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+        </template>
+        <tbody id="table_tbody">
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br />
+  <!-- ///////////////////////////////////////////// -->
+  <!-- //////////////// modal design /////////////// -->
+  <h4>Modal Example</h4>
+  <button class="open-modal" data-modal="myModal1">Open Modal 1</button>
+  <br />
+  <br />
+  <div id="myModal1" class="modal1">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Modal 1 Content</p>
+      <button class="open-modal" data-modal="myModal2">Open Modal 2</button>
+    </div>
+  </div>
+
+  <div id="myModal2" class="modal1">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Modal 2 Content</p>
+      <button class="open-modal" data-modal="myModal3">Open Modal 3</button>
+    </div>
+  </div>
+
+  <div id="myModal3" class="modal1">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Modal 3 Content</p>
+    </div>
+  </div>
+  <script nonce="<%= nonce %>">
+    function toggleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display =
+          modal.style.display === "block" ? "none" : "block";
+      }
+    }
+
+    const openModalButtons = document.querySelectorAll(".open-modal");
+    openModalButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        toggleModal(button.getAttribute("data-modal"));
+      });
+    });
+
+    const closeButtons = document.querySelectorAll(".close");
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        toggleModal(button.closest(".modal1").id);
+      });
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target.classList.contains("modal1")) {
+        toggleModal(event.target.id);
+      }
+    });
+  </script>
+
+  <!-- ///////////////////////////////////////////// -->
+  <!-- this is tab buttons -->
+  <div class="fullwidth flexbox flexdirec-row tab1 tabbuttondes1">
+    <label class="fullwidth flexbox flexdirec-row">
+      <input type="radio" checked="checked" name="radio1" class="radiobtn1" />
+      <div class="fullwidth tabdes1" style="text-align: center; padding: 5px">
+        Tab 1
+      </div>
+    </label>
+
+    <label class="flexbox fullwidth flexdirec-row">
+      <input type="radio" name="radio1" class="radiobtn1" />
+      <div class="fullwidth tabdes1" style="text-align: center; padding: 5px">
+        Tab 2
+      </div>
+    </label>
+    <div class="fullwidth"></div>
+  </div>
+  <br />
+  <!-- /////////////////// -->
+  <!-- /////// radio button custom design //////// -->
+  <label for="myradioid1" class="radiobutton1" style="margin-left: 15%">
+    <input
+      type="radio"
+      name="radioname1"
+      id="myradioid1"
+      class="radio__input"
+      checked="checked" />
+    <div class="radio__radio"></div>
+    Radio Button 1
+  </label>
+  <label for="myradioid2" class="radiobutton1">
+    <input
+      type="radio"
+      name="radioname1"
+      id="myradioid2"
+      class="radio__input" />
+    <div class="radio__radio"></div>
+    Radio Button 2
+  </label>
+  <br />
+  <br />
+  <!-- /////////////////////////////////////////// -->
+  <!-- /////////////////// checkbox ////////////// -->
+  <label class="checkbox1" for="checkboxid1">
+    <input
+      class="checkbox__input"
+      type="checkbox"
+      name="mycheckboxname"
+      id="checkboxid1" />
+    <div class="checkbox__box"></div>
+    Checkbox 1
+  </label>
+  <!-- /////////////////////////////////////////// -->
+  <br />
+  <br />
+  <!-- /////////////// toast message ///////////// -->
+  <button id="toastbtnid1">Toast</button>
+
+  <script nonce="<%= nonce %>">
+    document.getElementById("toastbtnid1").addEventListener("click", () => {
+      var x = document.getElementById("snackbar1");
+      x.innerHTML = "You receive a message";
+      x.className = "show";
+      setTimeout(function () {
+        x.className = x.className.replace("show", "");
+      }, 3000);
+    });
+  </script>
+  <br />
+  <br />
+  <!-- /////////////////////////////////////////// -->
+  <!-- //////////////// toggle design //////////// -->
+  <label class="toggle" for="myToggle">
+    <input class="toggle__input" name="" type="checkbox" id="myToggle" />
+    <div class="toggle__fill"></div>
+  </label>
+  <br />
+  <br />
+  <!-- /////////////////////////////////////////// -->
+</div>
