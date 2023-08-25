@@ -26,71 +26,68 @@
   <!-- ////////////////// -->
 </main>
 <script nonce="<%= nonce %>">
-  document.querySelector(`[HTMLINCLUDE="progressdesignid"]`).style.display =
-    "none";
-  document.querySelector(`[HTMLINCLUDE="drawermenudesignid"]`).style.display =
-    "none";
-  document.querySelector(`[HTMLINCLUDE="rangesliderdesignid"]`).style.display =
-    "none";
+  async function contentswitchfunc(name, ...getarray) {
+    const elements = document.querySelectorAll("[HTMLINCLUDE]");
+
+    elements.forEach((element) => {
+      const attributeValue = element.getAttribute("HTMLINCLUDE");
+      if (getarray.includes(attributeValue)) {
+        if (name === attributeValue) {
+          element.classList.remove("displaynone");
+        } else {
+          element.classList.add("displaynone");
+        }
+      }
+    });
+  }
+
   document.querySelectorAll(".sidenavid1").forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelector(`[HTMLINCLUDE="basicdesignsid"]`).style.display =
-        "block";
-      document.querySelector(`[HTMLINCLUDE="progressdesignid"]`).style.display =
-        "none";
-      document.querySelector(
-        `[HTMLINCLUDE="drawermenudesignid"]`
-      ).style.display = "none";
-      document.querySelector(
-        `[HTMLINCLUDE="rangesliderdesignid"]`
-      ).style.display = "none";
+      let contentarray = [
+        "basicdesignsid",
+        "progressdesignid",
+        "drawermenudesignid",
+        "rangesliderdesignid",
+      ];
+      contentswitchfunc("basicdesignsid", ...contentarray);
       document.querySelector(`#sidenavid1`).click();
     });
   });
 
   document.querySelectorAll(".sidenavid2").forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelector(`[HTMLINCLUDE="progressdesignid"]`).style.display =
-        "block";
-      document.querySelector(`[HTMLINCLUDE="basicdesignsid"]`).style.display =
-        "none";
-      document.querySelector(
-        `[HTMLINCLUDE="drawermenudesignid"]`
-      ).style.display = "none";
-      document.querySelector(
-        `[HTMLINCLUDE="rangesliderdesignid"]`
-      ).style.display = "none";
+      let contentarray = [
+        "basicdesignsid",
+        "progressdesignid",
+        "drawermenudesignid",
+        "rangesliderdesignid",
+      ];
+      contentswitchfunc("progressdesignid", ...contentarray);
       document.querySelector(`#sidenavid2`).click();
     });
   });
 
   document.querySelectorAll(".sidenavid3").forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelector(
-        `[HTMLINCLUDE="drawermenudesignid"]`
-      ).style.display = "block";
-      document.querySelector(`[HTMLINCLUDE="basicdesignsid"]`).style.display =
-        "none";
-      document.querySelector(`[HTMLINCLUDE="progressdesignid"]`).style.display =
-        "none";
-      document.querySelector(
-        `[HTMLINCLUDE="rangesliderdesignid"]`
-      ).style.display = "none";
+      let contentarray = [
+        "basicdesignsid",
+        "progressdesignid",
+        "drawermenudesignid",
+        "rangesliderdesignid",
+      ];
+      contentswitchfunc("drawermenudesignid", ...contentarray);
       document.querySelector(`#sidenavid3`).click();
     });
   });
   document.querySelectorAll(".sidenavid4").forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelector(
-        `[HTMLINCLUDE="rangesliderdesignid"]`
-      ).style.display = "block";
-      document.querySelector(
-        `[HTMLINCLUDE="drawermenudesignid"]`
-      ).style.display = "none";
-      document.querySelector(`[HTMLINCLUDE="basicdesignsid"]`).style.display =
-        "none";
-      document.querySelector(`[HTMLINCLUDE="progressdesignid"]`).style.display =
-        "none";
+      let contentarray = [
+        "basicdesignsid",
+        "progressdesignid",
+        "drawermenudesignid",
+        "rangesliderdesignid",
+      ];
+      contentswitchfunc("rangesliderdesignid", ...contentarray);
       document.querySelector(`#sidenavid4`).click();
     });
   });
