@@ -7,23 +7,13 @@ const userSchema = new mongoose.Schema({
     unique: true,
     max: 500,
   },
-  username: {
-    type: String,
-    required: true,
-    min: 3,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    min: 8,
-  },
-  lastname: {
+  name: {
     type: String,
     required: true,
     min: 1,
   },
-  firstname: {
+
+  content: {
     type: String,
     required: true,
     min: 1,

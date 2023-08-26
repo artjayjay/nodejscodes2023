@@ -24,6 +24,8 @@
   <!-- ////////////////// -->
   <%- include('rangeslider.ejs') %>
   <!-- ////////////////// -->
+  <%- include('infinitescrolltable.ejs') %>
+  <!-- ////////////////// -->
 </main>
 <script nonce="<%= nonce %>">
   async function contentswitchfunc(name, ...getarray) {
@@ -48,6 +50,7 @@
         "progressdesignid",
         "drawermenudesignid",
         "rangesliderdesignid",
+        "infinitescrolltbldesignid",
       ];
       contentswitchfunc("basicdesignsid", ...contentarray);
       document.querySelector(`#sidenavid1`).click();
@@ -61,6 +64,7 @@
         "progressdesignid",
         "drawermenudesignid",
         "rangesliderdesignid",
+        "infinitescrolltbldesignid",
       ];
       contentswitchfunc("progressdesignid", ...contentarray);
       document.querySelector(`#sidenavid2`).click();
@@ -74,6 +78,7 @@
         "progressdesignid",
         "drawermenudesignid",
         "rangesliderdesignid",
+        "infinitescrolltbldesignid",
       ];
       contentswitchfunc("drawermenudesignid", ...contentarray);
       document.querySelector(`#sidenavid3`).click();
@@ -86,9 +91,24 @@
         "progressdesignid",
         "drawermenudesignid",
         "rangesliderdesignid",
+        "infinitescrolltbldesignid",
       ];
       contentswitchfunc("rangesliderdesignid", ...contentarray);
       document.querySelector(`#sidenavid4`).click();
+    });
+  });
+  document.querySelectorAll(".sidenavid5").forEach((button) => {
+    button.addEventListener("click", () => {
+      let contentarray = [
+        "basicdesignsid",
+        "progressdesignid",
+        "drawermenudesignid",
+        "rangesliderdesignid",
+        "infinitescrolltbldesignid",
+      ];
+      contentswitchfunc("infinitescrolltbldesignid", ...contentarray);
+      document.querySelector(`#sidenavid5`).click();
+      displaytable();
     });
   });
 </script>

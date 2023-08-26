@@ -1,0 +1,127 @@
+<div
+  HTMLINCLUDE="infinitescrolltbldesignid"
+  class="fullwidth fullheight displaynone"
+  style="padding-left: 10px; padding-right: 10px">
+  <br />
+  <div class="outertbl2" style="width: 200px; overflow-x: auto">
+    <div id="scrollidtbl" class="outertbl1">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>CONTENT</th>
+          </tr>
+        </thead>
+        <tbody id="table_tbody">
+          <tr>
+            <td>datatest</td>
+            <td>datatest</td>
+            <td>datatest</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script nonce="<%= nonce %>">
+    let errortimeout,
+      tableincrement = 0,
+      tablecount = 0,
+      tblstatcount = "init";
+
+    var element = document.getElementById("scrollidtbl");
+    element.addEventListener("scroll", async function (event) {
+      var element = event.target;
+      if (element.scrollTop === 0) {
+        if (tableincrement > 0) {
+          tblstatcount = "decrement";
+          await displaytable();
+        }
+      }
+
+      if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+        if (tableincrement < tablecount) {
+          tblstatcount = "increment";
+          await displaytable();
+        }
+      }
+    });
+
+    element.addEventListener("wheel", async function (event) {
+      var element = event.target;
+      if (event.deltaY < 0 && element.scrollTop === 0) {
+        if (tableincrement > 0) {
+          tblstatcount = "decrement";
+          await displaytable();
+        }
+      }
+
+      if (
+        event.deltaY > 0 &&
+        element.scrollHeight - element.scrollTop === element.clientHeight
+      ) {
+        if (tableincrement < tablecount) {
+          tblstatcount = "increment";
+          await displaytable();
+        }
+      }
+    });
+
+    async function displaytable() {
+      let disableincrement = true;
+      if (tableincrement < 0) {
+        tableincrement = 0;
+      }
+      try {
+        let output = "";
+        let response = await fetch(
+          `/gettabledata/${tableincrement}/${tblstatcount}/table`,
+          {
+            method: "GET",
+          }
+        );
+
+        let myresult = await response.text();
+        output = myresult;
+
+        let response2 = await fetch(
+          `/gettabledata/${tableincrement}/${tblstatcount}/data`,
+          {
+            method: "GET",
+          }
+        );
+        let myresult2 = await response2.json();
+        if (disableincrement) {
+          if (myresult2.tablestatcount == "increment") {
+            tableincrement += 1;
+          }
+          if (myresult2.tablestatcount == "decrement") {
+            tableincrement -= 1;
+          }
+        }
+        if (myresult2.status == "success") {
+          let results = myresult2.allresults;
+          tablecount = myresult2.tablecount;
+          if (results.length != 0) {
+            disableincrement = true;
+            document.getElementById("table_tbody").innerHTML = output;
+          } else {
+            disableincrement = false;
+            tableincrement = 1;
+          }
+        } else {
+          alert("Error");
+        }
+        errortimeout = 0;
+      } catch (error) {
+        errortimeout += 1;
+        if (errortimeout >= 5) {
+          alert("Oops! Network Error!");
+        } else {
+          errortimeout = 0;
+          setTimeout(displaytable, 1000);
+        }
+      }
+    }
+  </script>
+</div>

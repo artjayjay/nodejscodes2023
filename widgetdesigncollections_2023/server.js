@@ -12,8 +12,8 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// const connectDB = require("./modulelibrary/mongodbconn");
-// connectDB();
+const connectDB = require("./modulelibrary/mongodbconn");
+connectDB();
 
 var server = require("http").createServer(app);
 
